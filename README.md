@@ -38,6 +38,12 @@ docker run --name text2video-db \
   -d postgres
 ```
 
+6. Run migrations
+
+```bash
+npm run db:migrate
+```
+
 ## Setting up the frontend
 
 1. Go to frontend directory
