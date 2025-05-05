@@ -5,9 +5,9 @@ interface VideoPanelProps {
 
 export default function VideoPanel({ loading, fileName }: VideoPanelProps) {
   return (
-    <div className="flex-1 p-8 bg-white dark:bg-gray-900 rounded-lg shadow-sm">
+    <div className="flex-1 p-8 bg-white dark:bg-gray-900 rounded-lg shadow-sm flex flex-col items-center justify-center">
       <h1 className="text-3xl font-semibold text-gray-800 dark:text-white mb-4 tracking-tight">
-        {loading ? "Generated Video" : "Welcome to the Video Generator!"}
+        {loading ? "Generating Video..." : "Welcome to the Video Generator!"}
       </h1>
 
       {loading ? (
@@ -31,7 +31,6 @@ export default function VideoPanel({ loading, fileName }: VideoPanelProps) {
               d="M4 12a8 8 0 018-8v8H4z"
             />
           </svg>
-          <span className="text-sm font-medium">Generating video...</span>
         </div>
       ) : fileName ? (
         <video

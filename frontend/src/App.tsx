@@ -64,16 +64,17 @@ function App() {
 <div className="flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
   <Sidebar prompts={prompts} />
 
-  <main className="flex-1 flex flex-col">
+  <main className="flex-1 flex flex-col items-center p-14">
 
     <VideoPanel loading={loading} fileName={fileName} />
-    <section className="p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+    <section className="p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-2xl w-[600px]">
       <textarea
         className="w-full resize-none border border-gray-300 dark:border-gray-600 rounded-md p-3 text-sm bg-gray-50 dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
         placeholder="Describe your animation..."
         rows={4}
+        disabled={!!fileName}
       />
       {!fileName && (
         <button
