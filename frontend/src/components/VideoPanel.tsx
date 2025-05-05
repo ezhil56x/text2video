@@ -1,10 +1,9 @@
 interface VideoPanelProps {
   loading: boolean;
   fileName?: string;
-  prompt?: string;
 }
 
-export default function VideoPanel({ loading, fileName, prompt }: VideoPanelProps) {
+export default function VideoPanel({ loading, fileName }: VideoPanelProps) {
   return (
     <div className="flex-1 p-8 bg-white dark:bg-gray-900 rounded-lg shadow-sm">
       <h1 className="text-3xl font-semibold text-gray-800 dark:text-white mb-4 tracking-tight">
