@@ -1,3 +1,6 @@
+Prerequisites
+- Manim should be installed and working. You can check this by running `manim --version` in your terminal.
+
 ## Setting up the backend
 
 1. Clone the repository
