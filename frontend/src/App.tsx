@@ -43,21 +43,6 @@ function App() {
           console.error(e);
         }
       }
-
-      if (fileName) {
-        try {
-          const res = await axios.get(`http://localhost:8000/video/${fileName}`, {
-            responseType: 'blob',
-          });
-          const url = URL.createObjectURL(new Blob([res.data]));
-          const video = document.createElement('video');
-          video.src = url;
-          video.controls = true;
-          document.body.appendChild(video);
-        } catch (e) {
-          console.error(e);
-        }
-      }
     };
 
     fetchData();
@@ -76,26 +61,32 @@ function App() {
   }, []);
 
   return (
-    <div className="flex h-screen">
-      <Sidebar prompts={prompts}/>
-      <div className="flex-1 flex flex-col">
-        <div className="p-4 border-b">
-          <textarea
-            className="w-full border p-2"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Describe your animation..."
-          />
-          <button
-            onClick={generateVideo}
-            className="mt-2 bg-blue-500 text-white px-4 py-2"
-          >
-            Generate
-          </button>
-        </div>
-        <VideoPanel loading={loading} fileName={fileName} />
-      </div>
-    </div>
+<div className="flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+  <Sidebar prompts={prompts} />
+
+  <main className="flex-1 flex flex-col">
+
+    <VideoPanel loading={loading} fileName={fileName} />
+    <section className="p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+      <textarea
+        className="w-full resize-none border border-gray-300 dark:border-gray-600 rounded-md p-3 text-sm bg-gray-50 dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Describe your animation..."
+        rows={4}
+      />
+      {!fileName && (
+        <button
+          onClick={generateVideo}
+          className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm px-5 py-2 rounded-md transition-colors"
+        >
+          Generate
+        </button>
+      )}
+    </section>
+  </main>
+</div>
+
   );
 }
 
