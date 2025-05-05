@@ -39,4 +39,18 @@ router.get("/history", async (_, res) => {
   res.json(history);
 });
 
+router.get("/chat/:id", async (req, res) => {
+  const { id } = req.params;
+  const prompt = await prisma.prompt.findUnique({
+    where: { id }
+  });
+  
+  if (!prompt) {
+    res.status(404).json({ error: "Prompt not found" });
+    return;
+  }
+
+  res.json(prompt);
+});
+
 export default router;

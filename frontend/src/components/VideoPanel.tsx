@@ -1,17 +1,17 @@
 interface VideoPanelProps {
   loading: boolean;
-  videoUrl: string;
+  fileName: string;
 }
 
-export default function VideoPanel({ loading, videoUrl }: VideoPanelProps) {
+export default function VideoPanel({ loading, fileName }: VideoPanelProps) {
   return (
     <div className="flex-1 p-8">
       <h1 className="text-2xl font-bold mb-6">Generated Video</h1>
       {loading ? (
         <div className="text-blue-500 font-medium">Generating video...</div>
-      ) : videoUrl ? (
+      ) : fileName ? (
         <video controls className="w-full max-w-xl">
-          <source src={videoUrl} type="video/mp4" />
+          <source src={`http://localhost:8000/video/${fileName}`} type="video/mp4" />
         </video>
       ) : (
         <p className="text-gray-500">No video generated yet.</p>
