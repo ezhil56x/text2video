@@ -44,6 +44,12 @@ docker run --name text2video-db \
 npm run db:migrate
 ```
 
+7. Start the backend
+
+```bash
+npm run dev
+```
+
 ## Setting up the frontend
 
 1. Go to frontend directory
